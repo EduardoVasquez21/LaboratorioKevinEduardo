@@ -9,6 +9,7 @@ import Entidades.Contacto;
 import com.vkaiido.DB.ConexionAMySQL;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +23,7 @@ public class FrmConsulta extends javax.swing.JFrame {
      */
     public FrmConsulta() {
         initComponents();
+        setLocationRelativeTo(null);
         carga();
     }
 
@@ -51,6 +53,8 @@ public class FrmConsulta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        BtnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +76,11 @@ public class FrmConsulta extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TblContactos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblContactosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TblContactos);
 
         jButton2.setText("Modelaje");
@@ -108,6 +117,21 @@ public class FrmConsulta extends javax.swing.JFrame {
         jLabel6.setText("Id");
 
         txtId.setEditable(false);
+        txtId.setEnabled(false);
+
+        jButton4.setText("Seleccionar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        BtnDelete.setText("Delete");
+        BtnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,41 +142,51 @@ public class FrmConsulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel3)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(134, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Update))
+                                .addComponent(Update)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnDelete))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 63, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -167,10 +201,15 @@ public class FrmConsulta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(3, 3, 3)))
                 .addComponent(jLabel3)
                 .addGap(14, 14, 14)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +219,8 @@ public class FrmConsulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3)
-                    .addComponent(Update))
+                    .addComponent(Update)
+                    .addComponent(BtnDelete))
                 .addGap(12, 12, 12))
         );
 
@@ -201,11 +241,18 @@ public class FrmConsulta extends javax.swing.JFrame {
         txtEdad.setText("");
         txtEmail.setText("");
         txtTel.setText("");
+        
+        /*for (int i =; i<TblContactos.getRowCount(); i++){
+        
+        modelo.removeRow(i);
+        i=i-1;
+        }*/
     }
     
     
     public void carga() {
-        String titulos[] = {"Nombre", "Edad", "Email", "NumeroDeTelefono"};
+        LimpiarTxt();
+        String titulos[] = {"Id","Nombre", "Edad", "Email", "NumeroDeTelefono"};
         //Ejemplosdearreglos
         Double numero[] = new Double[5];
         DefaultTableModel df = new DefaultTableModel(null, titulos);
@@ -214,19 +261,21 @@ public class FrmConsulta extends javax.swing.JFrame {
         ArrayList<Contacto> listar = es.ListaContactos();
 
         Iterator iterador = listar.iterator();
-        String fila[] = new String[5];
+        Object fila[] = new Object[5];
 
         while (iterador.hasNext()) {
             //CASTEAR
             Contacto estBucle = (Contacto) iterador.next();
-            fila[0] = estBucle.getNombre();
-            fila[1] = estBucle.getEdad();
-            fila[2] = estBucle.getEmail();
-            fila[3] = estBucle.getNumeroDeTelefono();
+            fila[0] = estBucle.getId();
+            fila[1] = estBucle.getNombre();
+            fila[2] = estBucle.getEdad();
+            fila[3] = estBucle.getEmail();
+            fila[4] = estBucle.getNumeroDeTelefono();
             df.addRow(fila);
         }
         TblContactos.setModel(df);
     }
+    
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
@@ -237,7 +286,7 @@ public class FrmConsulta extends javax.swing.JFrame {
         Contactos esDAO = new Contactos();
 
         es.setNombre(txtName.getText());
-        es.setEdad(txtEdad.getText());
+        es.setEdad(Integer.parseInt(txtEdad.getText()));
         es.setEmail(txtEmail.getText());
         es.setNumeroDeTelefono(txtTel.getText());
         esDAO.AddContacto(es);
@@ -246,8 +295,96 @@ public class FrmConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-      
+        try{
+            if(isSelect==true){
+        Contactos esDAO = new Contactos();
+        
+        int Id = Integer.parseInt(txtId.getText());
+        String Nombre= txtName.getText();
+        int Edad = Integer.parseInt(txtEdad.getText());
+        String Email= txtEmail.getText();
+        String NumeroDeTelefono= txtTel.getText();
+            
+            int row = TblContactos.getSelectedRow();
+            TblContactos.setValueAt(Id, row, 0);
+            TblContactos.setValueAt(Nombre, row, 1);
+            TblContactos.setValueAt(Edad, row, 2);
+            TblContactos.setValueAt(Email, row, 3);
+            TblContactos.setValueAt(NumeroDeTelefono, row, 4);
+            
+            Contacto es = new Contacto(Id,Nombre,Edad,Email,NumeroDeTelefono);
+            esDAO.UpdateContacto(es);
+            carga();
+            
+            isSelect = false;
+            }else{
+            JOptionPane.showMessageDialog(null,"No ha seleccionado","Aviso",1);
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Ha ocurrido un error");
+            
+        }
     }//GEN-LAST:event_UpdateActionPerformed
+
+    private void TblContactosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblContactosMouseClicked
+     /*   int fila = TblContactos.getSelectedRow();
+        if(fila==-1){
+            JOptionPane.showMessageDialog(null, "No ha seleccionado una fila");
+        }else{
+            String Id=(String) TblContactos.getValueAt(fila, 0);
+            String Nombre=(String) TblContactos.getValueAt(fila, 1);
+            String Edad=(String) TblContactos.getValueAt(fila, 2);
+            String Email=(String) TblContactos.getValueAt(fila, 3);
+            String NumeroDeTelefono=(String) TblContactos.getValueAt(fila, 4);
+            
+            txtId.setText(Id);
+            txtName.setText(Nombre);
+            txtEdad.setText(Edad);
+            txtEmail.setText(Email);
+            txtTel.setText(NumeroDeTelefono);
+        }*/
+    }//GEN-LAST:event_TblContactosMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        isSelect=true;
+        try{
+        txtId.setText(TblContactos.getValueAt(TblContactos.getSelectedRow(),0).toString());
+        txtName.setText(TblContactos.getValueAt(TblContactos.getSelectedRow(),1).toString());
+        txtEdad.setText(TblContactos.getValueAt(TblContactos.getSelectedRow(),2).toString());
+        txtEmail.setText(TblContactos.getValueAt(TblContactos.getSelectedRow(),3).toString());
+        txtTel.setText(TblContactos.getValueAt(TblContactos.getSelectedRow(),4).toString());
+        
+        
+        }catch(Exception ex){
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+    
+    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(isSelect==true){
+        Contactos esDAO = new Contactos();
+        
+        int Id = Integer.parseInt(txtId.getText());
+            
+            int row = TblContactos.getSelectedRow();
+            TblContactos.setValueAt(Id, row, 0);
+            
+            Contacto es = new Contacto(Id);
+            esDAO.DeleteContacto(es);
+            carga();
+            
+            isSelect = false;
+            }else{
+            JOptionPane.showMessageDialog(null,"No ha seleccionado","Aviso",1);
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Ha ocurrido un error");
+        }
+    }//GEN-LAST:event_BtnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,13 +420,17 @@ public class FrmConsulta extends javax.swing.JFrame {
             }
         });
     }
+    //private int Id = 0;
+    public boolean isSelect = false;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnDelete;
     private javax.swing.JTable TblContactos;
     private javax.swing.JButton Update;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

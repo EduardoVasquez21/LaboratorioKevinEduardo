@@ -13,9 +13,36 @@ public class Contacto {
 
     int Id;
     String Nombre;
-    String Edad;
+    int Edad;
     String Email;
     String NumeroDeTelefono;
+    
+      public Contacto() {
+    }
+
+    public Contacto(int Id) {
+        this.Id = Id;
+    }
+
+    public Contacto(String Nombre, int Edad, String Email, String NumeroDeTelefono) {
+        this.Nombre = Nombre;
+        this.Edad = Edad;
+        this.Email = Email;
+        this.NumeroDeTelefono = NumeroDeTelefono;
+    }
+
+    public Contacto(int Id, String Nombre, int Edad, String Email, String NumeroDeTelefono) {
+        this.Id = Id;
+        this.Nombre = Nombre;
+        this.Edad = Edad;
+        this.Email = Email;
+        this.NumeroDeTelefono = NumeroDeTelefono;
+    }
+
+
+
+
+
 
     public int getId() {
         return Id;
@@ -24,7 +51,7 @@ public class Contacto {
     public void setId(int Id) {
         this.Id = Id;
     }
-    
+ 
     public String getNombre() {
         return Nombre;
     }
@@ -33,15 +60,17 @@ public class Contacto {
         this.Nombre = Nombre;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return Edad;
     }
 
-    public void setEdad(String Edad) {
+    public void setEdad(int Edad) {
         this.Edad = Edad;
     }
 
 
+
+  
 
     public String getEmail() {
         return Email;

@@ -25,7 +25,9 @@ public class ConexionAMySQL {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error" + e.toString());
         }
-
+        
+        
+        
         return ConnectionDB;
 
     }
