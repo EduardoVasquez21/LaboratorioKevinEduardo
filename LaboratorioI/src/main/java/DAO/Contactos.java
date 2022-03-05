@@ -21,6 +21,10 @@ import javax.swing.JOptionPane;
  */
 public class Contactos {
 
+    
+        ConexionAMySQL con = new ConexionAMySQL();
+        Connection conexion = con.getConection();
+    
     public ArrayList<Contacto> ListaContactos() {
         ArrayList<Contacto> listado = null;
         
@@ -61,8 +65,5 @@ public class Contactos {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error"+ex);
         }
-    
-    }
-    
-    
+     }  
 }

@@ -10,11 +10,21 @@ package Entidades;
  */
 public class Contacto {
 
+
+    int Id;
     String Nombre;
     String Edad;
     String Email;
     String NumeroDeTelefono;
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+    
     public String getNombre() {
         return Nombre;
     }
