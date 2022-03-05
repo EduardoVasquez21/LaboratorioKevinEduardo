@@ -1,0 +1,6 @@
+Entidades\Contacto.class
+com\vkaiido\DB\ConexionAMySQL.class
+com\vkaiido\laboratorioi\FrmConsulta.class
+com\vkaiido\laboratorioi\FrmConsulta$1.class
+com\vkaiido\laboratorioi\FrmConsulta$2.class
+DAO\Contactos.class
