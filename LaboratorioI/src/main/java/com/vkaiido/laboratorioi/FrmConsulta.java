@@ -228,7 +228,7 @@ public class FrmConsulta extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel8.setText("Opciones");
+        jLabel8.setText("Options");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
