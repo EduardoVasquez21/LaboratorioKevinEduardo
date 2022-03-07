@@ -39,8 +39,6 @@ public class FrmConsulta extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblContactos = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
@@ -90,24 +88,6 @@ public class FrmConsulta extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(TblContactos);
-
-        jButton2.setBackground(new java.awt.Color(204, 255, 204));
-        jButton2.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jButton2.setText("Modelaje");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setBackground(new java.awt.Color(204, 255, 204));
-        jButton4.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jButton4.setText("Seleccionar Fila");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -272,13 +252,10 @@ public class FrmConsulta extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(193, 193, 193)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -288,10 +265,7 @@ public class FrmConsulta extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
@@ -354,10 +328,6 @@ public class FrmConsulta extends javax.swing.JFrame {
     }
     
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Contacto es = new Contacto();
         Contactos esDAO = new Contactos();
@@ -405,26 +375,6 @@ public class FrmConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void TblContactosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblContactosMouseClicked
-     /*   int fila = TblContactos.getSelectedRow();
-        if(fila==-1){
-            JOptionPane.showMessageDialog(null, "No ha seleccionado una fila");
-        }else{
-            String Id=(String) TblContactos.getValueAt(fila, 0);
-            String Nombre=(String) TblContactos.getValueAt(fila, 1);
-            String Edad=(String) TblContactos.getValueAt(fila, 2);
-            String Email=(String) TblContactos.getValueAt(fila, 3);
-            String NumeroDeTelefono=(String) TblContactos.getValueAt(fila, 4);
-            
-            txtId.setText(Id);
-            txtName.setText(Nombre);
-            txtEdad.setText(Edad);
-            txtEmail.setText(Email);
-            txtTel.setText(NumeroDeTelefono);
-        }*/
-    }//GEN-LAST:event_TblContactosMouseClicked
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
         isSelect=true;
         try{
         txtId.setText(TblContactos.getValueAt(TblContactos.getSelectedRow(),0).toString());
@@ -436,7 +386,7 @@ public class FrmConsulta extends javax.swing.JFrame {
         
         }catch(Exception ex){
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_TblContactosMouseClicked
     
     private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
         // TODO add your handling code here:
@@ -505,9 +455,7 @@ public class FrmConsulta extends javax.swing.JFrame {
     private javax.swing.JTable TblContactos;
     private javax.swing.JButton Update;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
